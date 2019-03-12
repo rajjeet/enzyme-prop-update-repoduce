@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -8,7 +9,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: "/assets"
+        publicPath: "/"
+    },
+    devServer: {
+        hot: true
     },
     module: {
         rules: [
@@ -27,6 +31,7 @@ module.exports = {
             title: 'My app',
             template: path.resolve(__dirname, 'src/index.html')
         }),
-        new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin({cleanOnceBeforeBuildPatterns: ['dist']}),
+        new webpack.HotModuleReplacementPlugin()
     ]
 };
