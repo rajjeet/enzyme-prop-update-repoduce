@@ -1,5 +1,12 @@
 import React from 'react';
 
-const App = () => <div>Hello world!!</div>;
+
+class App extends React.Component {
+    render() {
+        return (
+            <div>hello </div>
+        );
+    }
+}
 
 export default App;
