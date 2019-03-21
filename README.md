@@ -1,4 +1,5 @@
-# Enzyme Prop Update Issue 
+# Enzyme Prop Update Issue [Solved]
+[Github Issue Link](https://github.com/airbnb/enzyme/issues/2062)
 ### Setup
 ```javascript
 npm install

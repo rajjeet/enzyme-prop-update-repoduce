@@ -13,9 +13,15 @@ class App extends React.Component {
         this.setState({counter: this.state.counter + 1});
     };
 
+    // see commit 8918cdd0 for the original problem issue - TL DR the redux action call was async and needed a promise
     addToGlobalCounter = () => {
-        this.props.addToGlobalCounter();
-        this.setState({globalCounterCopy: this.props.globalCounter})
+        this.addToGlobalCounterAsync().then(() => {
+            this.setState({globalCounterCopy: this.props.globalCounter})
+        });
+    };
+
+    addToGlobalCounterAsync = () => {
+        return new Promise((resolve) => resolve(this.props.addToGlobalCounter()));
     };
 
     render() {
